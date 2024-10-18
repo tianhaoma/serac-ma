@@ -65,7 +65,7 @@ FiniteElementState fit(std::integer_sequence<int, i...>, func f, mfem::ParMesh& 
 template <int dim, typename signature, int... n, typename func, typename... T>
 FiniteElementState fit(func f, mfem::ParMesh& mesh, const T&... solution_fields)
 {
-  auto iseq = std::make_integer_sequence<int, sizeof...(T)>{};
+  auto iseq = std::make_integer_sequence<int, static_cast<int>(sizeof...(T))>{};
   return detail::fit<dim, signature>(iseq, f, mesh, solution_fields...);
 }
 

@@ -391,7 +391,7 @@ public:
       // need to change to a camp integer sequence.
       auto unmodified_qf_return = detail::apply_shape_aware_qf_helper(
           integrand_, time, x, shape_val, reduced_trial_space_tuple, qfunc_tuple, shape_correction,
-          std::make_integer_sequence<int, sizeof...(qfunc_args)>{});
+          std::make_integer_sequence<int, static_cast<int>(sizeof...(qfunc_args))>{});
       return shape_correction.modify_shape_aware_qf_return(test_space, unmodified_qf_return);
     }
   };
@@ -432,7 +432,7 @@ public:
       // need to change to a camp integer sequence.
       auto unmodified_qf_return = detail::apply_shape_aware_qf_helper_with_state(
           integrand_, time, x, state, shape_val, reduced_trial_space_tuple, qfunc_tuple, shape_correction,
-          std::make_integer_sequence<int, sizeof...(qfunc_args)>{});
+          std::make_integer_sequence<int, static_cast<int>(sizeof...(qfunc_args))>{});
       return shape_correction.modify_shape_aware_qf_return(test_space, unmodified_qf_return);
     }
   };
